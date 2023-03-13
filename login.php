@@ -4,7 +4,7 @@ require 'connection.php';
 $email = $_POST['email'];
 $password = md5 ($_POST['password']);
 
-$sql="select * from user where (email='$email' and password ='$password')";
+$sql="select * from user where (email='$email' and password ='$password')"; //check email & password
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result)>0){
