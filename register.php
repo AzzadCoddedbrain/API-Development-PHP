@@ -12,7 +12,7 @@ $password = md5 ($_POST['password']);
 
 if (mysqli_num_rows($res) > 0) {
 // check email in database
-    $response ['error'] = 409;
+    $response ['status_code'] = 409;
     $response ['message'] = "email already exists";
 		}
 else{
@@ -21,11 +21,11 @@ else{
         $result= mysqli_query($conn, $sql) or die("Query Failed");  // hit query 
        
         if($result){
-            $response ['error'] = 200;
+            $response ['status_code'] = 200;
             $response ['message'] = "Register Successful!";
         }
         else{
-            $response ['error'] = 401;
+            $response ['status_code'] = 401;
             $response ['message'] = "Register Failed!"; 
         }
 
