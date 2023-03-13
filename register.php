@@ -6,7 +6,7 @@ $email = $_POST['email'];
 $password = md5 ($_POST['password']);
 
 
-// check email id is exit into my database 
+// check email id is exit into database 
     $sql="select * from user where (email='$email')";
     $res=mysqli_query($conn,$sql);
 
@@ -21,12 +21,12 @@ else{
         $result= mysqli_query($conn, $sql) or die("Query Failed");  // hit query 
        
         if($result){
-            $response ['error'] = 000;
+            $response ['error'] = 200;
             $response ['message'] = "Register Successful!";
         }
         else{
-            $response ['error'] = 001;
-            $response ['message'] = "Register Failed!";
+            $response ['error'] = 401;
+            $response ['message'] = "Register Failed!"; 
         }
 
 }
