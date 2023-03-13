@@ -3,7 +3,7 @@ require 'connection.php';
 
 $username = $_POST['username'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = md5 ($_POST['password']);
 
 
 // check email id is exit into my database 
@@ -11,16 +11,9 @@ $password = $_POST['password'];
     $res=mysqli_query($conn,$sql);
 
 if (mysqli_num_rows($res) > 0) {
-    echo "email already exists";
-        //  $row = mysqli_fetch_assoc($res);
-        // if($email==isset($row['email']))
-        // {
-        //     //	echo "email already exists";
-        // }
-		// if($username==isset($row['username']))
-		// {
-		// 	echo "username  already exists";
-		// }
+// check email in database
+    $response ['error'] = 409;
+    $response ['message'] = "email already exists";
 		}
 else{
     // SignUP User 
@@ -28,12 +21,15 @@ else{
         $result= mysqli_query($conn, $sql) or die("Query Failed");  // hit query 
        
         if($result){
-            echo "done ";
-        }else{
-            echo 'faild';
+            $response ['error'] = 000;
+            $response ['message'] = "Register Successful!";
+        }
+        else{
+            $response ['error'] = 001;
+            $response ['message'] = "Register Failed!";
         }
 
 }
 
-
+echo json_encode($response);
 ?>
