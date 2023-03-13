@@ -10,7 +10,7 @@ if(!$conn)
 {
     echo"not connected";
 }else{
-    echo " connected";
+    // echo " connected";
 }
 // if(!$conn)
 // {

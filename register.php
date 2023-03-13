@@ -11,7 +11,10 @@ $password = $_POST['password'];
     $res=mysqli_query($conn,$sql);
 
 if (mysqli_num_rows($res) > 0) {
-    echo "email already exists";
+    $resposne['error'] = "409";
+    $resposne['message'] = "Email Already is exits in database";
+
+    // echo "email already exists";
         //  $row = mysqli_fetch_assoc($res);
         // if($email==isset($row['email']))
         // {
@@ -28,12 +31,15 @@ else{
         $result= mysqli_query($conn, $sql) or die("Query Failed");  // hit query 
        
         if($result){
-            echo "done ";
+            $resposne['error'] = "200";
+            $resposne['message'] = "Reginter Succefully";
         }else{
-            echo 'faild';
+            $resposne['error'] = "001";
+            $resposne['message'] = "Reginter Succefully";
         }
 
 }
 
+echo json_encode($resposne);
 
 ?>
