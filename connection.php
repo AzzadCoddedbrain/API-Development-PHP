@@ -12,5 +12,4 @@ if(!$conn)
 }else{
     echo " connected";
 }
-// Annu First Commit
 ?>
